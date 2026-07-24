@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Administrativo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 240px;
+            background: #1e293b;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #38bdf8;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .sidebar nav a:hover,
+        .sidebar nav a.active {
+            background: #334155;
+            color: #f1f5f9;
+        }
+
+        .main {
+            flex: 1;
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .header .date {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .card .label {
+            font-size: 13px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card .value {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .card .change {
+            font-size: 13px;
+        }
+
+        .card .change.up { color: #4ade80; }
+        .card .change.down { color: #f87171; }
+
+        .charts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .chart-box {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .chart-box h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #cbd5e1;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 180px;
+            gap: 12px;
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .bar {
+            width: 100%;
+            max-width: 44px;
+            border-radius: 6px 6px 0 0;
+            min-height: 8px;
+            transition: 0.3s;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .donut {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #38bdf8 0% 40%,
+                #4ade80 40% 65%,
+                #fbbf24 65% 85%,
+                #f87171 85% 100%
+            );
+            margin: 0 auto 16px;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .legend-item .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { width: 64px; padding: 16px 8px; }
+            .sidebar h2, .sidebar nav a span { display: none; }
+            .sidebar nav a { padding: 10px; text-align: center; }
+            .charts { grid-template-columns: 1fr; }
+            .main { padding: 20px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <h2>AdminPanel</h2>
+        <nav>
+            <a href="#" class="active"><span>Dashboard</span></a>
+            <a href="#"><span>Ventas</span></a>
+            <a href="#"><span>Usuarios</span></a>
+            <a href="#"><span>Reportes</span></a>
+            <a href="#"><span>Ajustes</span></a>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <div class="header">
+            <h1>Dashboard</h1>
+            <span class="date">Julio 2026</span>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <span class="label">Ingresos</span>
+                <span class="value">$48,250</span>
+                <span class="change up">+12.5%</span>
+            </div>
+            <div class="card">
+                <span class="label">Usuarios</span>
+                <span class="value">2,847</span>
+                <span class="change up">+8.2%</span>
+            </div>
+            <div class="card">
+                <span class="label">Pedidos</span>
+                <span class="value">643</span>
+                <span class="change down">-3.1%</span>
+            </div>
+            <div class="card">
+                <span class="label">Conversión</span>
+                <span class="value">4.8%</span>
+                <span class="change up">+1.2%</span>
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart-box">
+                <h3>Ventas mensuales</h3>
+                <div class="bar-chart">
+                    <div class="bar-group">
+                        <div class="bar" style="height:60%;background:#38bdf8;"></div>
+                        <span class="bar-label">Ene</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="height:45%;background:#38bdf8;"></div>
+                        <span class="bar-label">Feb</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="height:75%;background:#38bdf8;"></div>
+                        <span class="bar-label">Mar</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="height:55%;background:#38bdf8;"></div>
+                        <span class="bar-label">Abr</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="height:90%;background:#38bdf8;"></div>
+                        <span class="bar-label">May</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar" style="height:70%;background:#38bdf8;"></div>
+                        <span class="bar-label">Jun</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <h3>Categorías</h3>
+                <div class="donut"></div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="dot" style="background:#38bdf8;"></span> Productos (40%)
+                    </div>
+                    <div class="legend-item">
+                        <span class="dot" style="background:#4ade80;"></span> Servicios (25%)
+                    </div>
+                    <div class="legend-item">
+                        <span class="dot" style="background:#fbbf24;"></span> Suscripciones (20%)
+                    </div>
+                    <div class="legend-item">
+                        <span class="dot" style="background:#f87171;"></span> Otros (15%)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
